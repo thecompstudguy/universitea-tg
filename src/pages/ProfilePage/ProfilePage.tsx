@@ -41,7 +41,12 @@ export const ProfilePage: FC = () => {
       <div className="profile-page">
         <header className="profile-page__header">
           <BrandMark/>
-          <span className="profile-page__pill">ME</span>
+          <Avatar
+            size={40}
+            acronym="ME"
+            className="profile-page__me-avatar"
+            style={{ backgroundColor: '#1b1b1b' }}
+          />
         </header>
         <List>
           <Section header="Your identity (inside UniversiTEA)">

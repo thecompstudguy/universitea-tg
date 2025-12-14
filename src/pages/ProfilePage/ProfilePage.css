@@ -10,15 +10,6 @@
   padding: 14px 16px 8px;
 }
 
-.profile-page__pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: rgba(255, 144, 0, 0.12);
-  color: var(--tgui--link_color);
-  font-size: 12px;
-  font-weight: 700;
+.profile-page__me-avatar {
+  border: 1px solid rgba(255, 144, 0, 0.35);
 }
-
