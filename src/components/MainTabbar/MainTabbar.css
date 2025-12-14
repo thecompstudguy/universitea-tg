@@ -1,5 +1,5 @@
 .main-tabbar {
-  z-index: 10;
+  z-index: var(--tgui--z-index--simple);
 }
 
 .main-tabbar__icon {
@@ -9,4 +9,3 @@
 .main-tabbar__icon--selected {
   color: var(--tgui--link_color);
 }
-

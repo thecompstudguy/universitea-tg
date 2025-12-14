@@ -1,4 +1,4 @@
-import { Button, FileInput, IconButton, List, Modal, Section, Text, Textarea } from '@telegram-apps/telegram-ui';
+import { Button, FileInput, IconButton, List, Modal, Section, Textarea } from '@telegram-apps/telegram-ui';
 import type { ChangeEvent, FC } from 'react';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
@@ -106,7 +106,7 @@ function syncDialogA11yIds(contentEl: HTMLElement) {
       const srDesc = document.createElement('p');
       srDesc.id = descriptionId;
       srDesc.className = 'create-post-modal__sr-only';
-      srDesc.textContent = 'Tip: keep it general. If it’s identifiable, redact it.';
+      srDesc.textContent = 'Write your post and optionally add photos/videos.';
       dialogEl.appendChild(srDesc);
     }
   }
@@ -217,7 +217,7 @@ export const CreatePostModal: FC<{
     >
       <h2 className="create-post-modal__sr-only create-post-modal__a11y-title">Create post</h2>
       <p className="create-post-modal__sr-only create-post-modal__a11y-description">
-        Tip: keep it general. If it’s identifiable, redact it.
+        Write your post and optionally add photos/videos.
       </p>
       <List>
         <Section header="What’s the tea?">
@@ -272,9 +272,6 @@ export const CreatePostModal: FC<{
           )}
         </Section>
         <div className="create-post-modal__actions">
-          <Text className="create-post-modal__hint">
-            Tip: keep it general. If it’s identifiable, redact it.
-          </Text>
           <Button
             className="create-post-modal__post-btn"
             stretched

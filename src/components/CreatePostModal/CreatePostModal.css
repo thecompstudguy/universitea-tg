@@ -1,15 +1,20 @@
 .create-post-modal__actions {
-  padding: 12px 16px 16px;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background: var(--tgui--bg_color);
+  border-top: 1px solid var(--tgui--divider);
+  padding: 12px 16px calc(16px + var(--tgui--safe_area_inset_bottom, 0px));
 }
 
 .create-post-modal__post-btn {
   --tgui--button_color: var(--ut-accent-green);
-  --tgui--button_text_color: #081108;
+  --tgui--button_text_color: #ffffff;
 }
 
-.create-post-modal__hint {
-  color: var(--tgui--hint_color);
-  margin-bottom: 12px;
+.create-post-modal__post-btn[disabled] {
+  opacity: 1;
+  --tgui--button_color: rgba(108, 189, 67, 0.35);
 }
 
 .create-post-modal__media-grid {
