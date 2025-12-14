@@ -83,23 +83,6 @@ Guide: https://docs.telegram-mini-apps.com/platform/creating-new-app
 - `preview`: preview the production build locally
 - `lint`: run eslint
 - `lint:fix`: run eslint with `--fix`
-- `deploy`: deploy `dist/` to GitHub Pages (via `gh-pages`)
-
-## Deployment
-
-This repo includes a GitHub Pages deployment flow. To configure it:
-
-1. Update `homepage` in `package.json` to your GitHub Pages URL.
-2. Update `base` in `vite.config.ts` to match your repository name.
-
-Then:
-
-```bash
-pnpm build
-pnpm deploy
-```
-
-If you deploy via another host (Vercel, Netlify, etc.), you can ignore `gh-pages` and configure the hosting platform normally for a Vite SPA.
 
 ## TON Connect (optional)
 
