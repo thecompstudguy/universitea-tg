@@ -1,10 +1,14 @@
 import type { ComponentType, JSX } from 'react';
 
 import { IndexPage } from '@/pages/IndexPage/IndexPage';
+import { FeedPage } from '@/pages/FeedPage/FeedPage.tsx';
 import { InitDataPage } from '@/pages/InitDataPage.tsx';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
+import { PostPage } from '@/pages/PostPage/PostPage.tsx';
+import { ProfilePage } from '@/pages/ProfilePage/ProfilePage.tsx';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
 import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
+import { UserPage } from '@/pages/UserPage/UserPage.tsx';
 
 interface Route {
   path: string;
@@ -14,7 +18,11 @@ interface Route {
 }
 
 export const routes: Route[] = [
-  { path: '/', Component: IndexPage },
+  { path: '/', Component: FeedPage },
+  { path: '/post/:postId', Component: PostPage },
+  { path: '/me', Component: ProfilePage, title: 'Profile' },
+  { path: '/user/:userId', Component: UserPage, title: 'User' },
+  { path: '/dev', Component: IndexPage, title: 'Dev Menu' },
   { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
