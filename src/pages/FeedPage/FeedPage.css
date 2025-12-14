@@ -10,6 +10,16 @@
   padding: 14px 16px 8px;
 }
 
+.feed-page__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feed-page__create-icon {
+  color: var(--tgui--link_color);
+}
+
 .feed-page__tagline {
   padding: 0 16px 8px;
   color: var(--tgui--hint_color);

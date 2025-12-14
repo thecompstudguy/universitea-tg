@@ -59,6 +59,7 @@ export const PostPage: FC = () => {
 
   const createdAt = formatRelativeTime(new Date(post.createdAt));
   const isVerified = author.trustTier === 'verified';
+  const media = post.media ?? [];
 
   return (
     <Page>
@@ -97,6 +98,33 @@ export const PostPage: FC = () => {
               <Cell subtitle="View user details">About {author.handle}</Cell>
             </Link>
           </Section>
+          {media.length > 0 && (
+            <Section header="Media">
+              <div className="post-page__media-grid">
+                {media.map((m) => (
+                  <div key={m.id} className="post-page__media-item">
+                    {m.type === 'image' ? (
+                      <img
+                        className="post-page__media-preview"
+                        src={m.url}
+                        alt={m.fileName || 'Post image'}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <video
+                        className="post-page__media-preview"
+                        src={m.url}
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </Section>
+          )}
           <Section header="Comments">
             {comments.length === 0 ? (
               <Cell readOnly>

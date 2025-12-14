@@ -15,6 +15,16 @@ export type TeaPost = {
   body: string;
   tags: string[];
   upvotes: number;
+  media?: TeaMedia[];
+};
+
+export type TeaMedia = {
+  id: string;
+  type: 'image' | 'video';
+  url: string;
+  fileName: string;
+  mimeType: string;
+  size: number;
 };
 
 export type TeaComment = {
