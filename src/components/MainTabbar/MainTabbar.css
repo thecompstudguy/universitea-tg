@@ -1,0 +1,11 @@
+.main-tabbar {
+  z-index: var(--tgui--z-index--simple);
+}
+
+.main-tabbar__icon {
+  color: var(--tgui--hint_color);
+}
+
+.main-tabbar__icon--selected {
+  color: var(--tgui--link_color);
+}

@@ -5,6 +5,10 @@ import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
   {
@@ -19,6 +23,8 @@ export default tseslint.config(
     },
     languageOptions: {
       parserOptions: {
+        tsconfigRootDir,
+        project: ['./tsconfig.json'],
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: {
