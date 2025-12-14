@@ -1,0 +1,31 @@
+.user-page {
+  min-height: 100vh;
+  padding-bottom: calc(16px + var(--tgui--safe_area_inset_bottom, 0px));
+}
+
+.user-page__header {
+  padding: 14px 16px 4px;
+}
+
+.user-page__tier {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--tgui--hint_color);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.user-page__tier--trusted {
+  background: rgba(255, 144, 0, 0.12);
+  color: var(--tgui--link_color);
+}
+
+.user-page__tier--verified {
+  background: rgba(108, 189, 67, 0.18);
+  color: var(--ut-accent-green);
+}

@@ -1,0 +1,24 @@
+.profile-page {
+  min-height: 100vh;
+  padding-bottom: calc(72px + var(--tgui--safe_area_inset_bottom, 0px));
+}
+
+.profile-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 8px;
+}
+
+.profile-page__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 144, 0, 0.12);
+  color: var(--tgui--link_color);
+  font-size: 12px;
+  font-weight: 700;
+}
+
