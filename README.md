@@ -6,7 +6,7 @@
 
 **Author:** The CompSTUD Guy (`the.compstud.guy@universitea.shop`)
 
-This repository contains the **Telegram Mini App (front-end)**. For product goals, safety posture, and architectural decisions, see `PROJECT_BRIEF.md`.
+This repository contains the **Telegram Mini App (front-end)**. For product goals, safety posture, and architectural decisions, see [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md).
 
 > UniversiTEA is designed for *pseudonymity* inside the app, not “perfect” or legally guaranteed anonymity.
 

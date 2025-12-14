@@ -10,7 +10,7 @@
 
 ## 1. One‑sentence summary
 
-**UniversiTEA is a Telegram Mini App for student‑only, school‑scoped anonymous posting and discussion (“tea”) with strong safety, privacy-by-design, and scalable moderation.**
+**UniversiTEA is a Telegram Mini App for student‑only, school‑scoped anonymous posting and discussion (“tea” / “confessions”) with strong safety, privacy-by-design, and scalable moderation.**
 
 ---
 
@@ -179,7 +179,7 @@ UniversiTEA is not trying to “replace” broad social platforms; it’s design
 
 - **School**: Top-level community boundary (e.g., University A).
 - **Group / Node**: A sub-community within a school (optional).
-- **Tea**: Informal anonymous gossip/discussion content.
+- **Tea / confession**: Informal anonymous gossip/discussion content (terms used interchangeably).
 - **Poster handle**: Ephemeral pseudonym shown to other users (not Telegram username).
 - **Trust score**: Internal metric derived from account age, verification, behavior, and reports.
 - **Shadow-remove**: Content appears removed to others but still visible to author (optional tactic).
@@ -297,7 +297,7 @@ Telegram Mini App (Web)
 
 ## 13. Data model (conceptual)
 
-> Final schemas live in `/docs/data-model/` and in IaC definitions. This section sets shared vocabulary.
+> Final schemas live in the implementation and in IaC definitions. This section sets shared vocabulary.
 
 ### 13.1 Core entities
 - **User**
@@ -514,10 +514,6 @@ Include:
   /notifications      # Push/Telegram notify logic (if used)
 /infra
   /cdk or /terraform  # Infrastructure as Code
-/docs
-  /data-model
-  /moderation-policy
-  /runbooks
 /scripts
 ```
 
@@ -527,7 +523,7 @@ Include:
   - environment variables,
   - local dev steps,
   - deployment notes.
-- Key decisions tracked via ADRs in `/docs/adr/`.
+- Key decisions tracked via ADRs (architecture decision records) in the repo.
 
 ---
 
@@ -619,8 +615,8 @@ Include:
 
 When implementing or reviewing changes:
 - Check whether the change aligns with the principles (Section 4).
-- Update `/docs/adr/` for non-trivial architectural decisions.
-- If a feature impacts safety/privacy, update `/docs/moderation-policy/` and relevant runbooks.
+- Add/update an ADR for non-trivial architectural decisions.
+- If a feature impacts safety/privacy, update the moderation policy and relevant runbooks.
 
 ---
 
@@ -628,7 +624,7 @@ When implementing or reviewing changes:
 
 - Maintainer(s): The CompSTUD Guy (`the.compstud.guy@universitea.shop`)
 - Security contact: The CompSTUD Guy (`the.compstud.guy@universitea.shop`)
-- Incident response: see `/docs/runbooks/incident-response.md` (create if missing)
+- Incident response: follow the incident response runbook (to be created)
 
 ---
 
