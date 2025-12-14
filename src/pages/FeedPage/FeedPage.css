@@ -16,6 +16,11 @@
   gap: 10px;
 }
 
+.feed-page__create-btn {
+  --tgui--secondary_fill: rgba(108, 189, 67, 0.18);
+  --tgui--link_color: var(--ut-accent-green);
+}
+
 .feed-page__create-icon {
   color: var(--tgui--link_color);
 }

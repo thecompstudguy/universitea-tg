@@ -276,6 +276,7 @@ export const CreatePostModal: FC<{
             Tip: keep it general. If it’s identifiable, redact it.
           </Text>
           <Button
+            className="create-post-modal__post-btn"
             stretched
             size="l"
             mode="filled"

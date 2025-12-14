@@ -69,6 +69,7 @@ export const FeedPage: FC = () => {
             <IconButton
               size="m"
               mode="bezeled"
+              className="feed-page__create-btn"
               aria-label="Create post"
               onClick={() => setCreateOpen(true)}
             >
