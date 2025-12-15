@@ -33,6 +33,7 @@ try {
     debug,
     eruda: debug && ['ios', 'android'].includes(platform),
     mockForMacOS: platform === 'macos',
+    platform,
   });
 
   const remainingLoadingMs = MIN_LOADING_SCREEN_MS - (Date.now() - loadingScreenStartedAt);

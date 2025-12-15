@@ -100,6 +100,7 @@ export const FeedPage: FC = () => {
               return (
                 <Link key={post.id} to={`/post/${post.id}`}>
                   <Cell
+                    className="feed-page__cell"
                     before={
                       <Avatar
                         size={40}
@@ -107,7 +108,11 @@ export const FeedPage: FC = () => {
                         style={{ backgroundColor: author.avatarColor }}
                       />
                     }
-                    subtitle={`${author.handle} • ${createdAt} • ${post.school}`}
+                    subtitle={(
+                      <span className="feed-page__subtitle">
+                        {author.handle} • {createdAt} • {post.school}
+                      </span>
+                    )}
                     after={
                       <div className="feed-page__after">
                         {showVerified && (
@@ -125,7 +130,22 @@ export const FeedPage: FC = () => {
                     }
                     multiline
                   >
-                    {post.body}
+                    <div className="feed-page__cell-content">
+                      <div className="feed-page__body">{post.body}</div>
+                      <div className="feed-page__meta-row feed-page__meta-row--mobile">
+                        {showVerified && (
+                          <span className="feed-page__trust feed-page__trust--verified">
+                            VERIFIED
+                          </span>
+                        )}
+                        <Badge
+                          type="number"
+                          className="feed-page__badge"
+                        >
+                          {commentCount}
+                        </Badge>
+                      </div>
+                    </div>
                   </Cell>
                 </Link>
               );

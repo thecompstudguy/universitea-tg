@@ -1,6 +1,7 @@
 /* Dark, high-contrast theme with orange accents (inspired palette, not brand-identical). */
 :root {
   color-scheme: dark;
+  --ut-safe-area-top: var(--tgui--safe_area_inset_top, env(safe-area-inset-top, 0px));
 }
 
 body {
@@ -12,6 +13,10 @@ body {
 .app-root {
   --ut-accent-green: #6cbd43;
   --ut-font-badge: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding-top: calc(16px + var(--ut-safe-area-top));
 
   --tg-theme-bg-color: #0b0b0b;
   --tg-theme-secondary-bg-color: #111111;

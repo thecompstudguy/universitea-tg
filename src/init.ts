@@ -19,6 +19,7 @@ export async function init(options: {
   debug: boolean;
   eruda: boolean;
   mockForMacOS: boolean;
+  platform: string;
 }): Promise<void> {
   // Set @telegram-apps/sdk-react debug mode and initialize it.
   setDebug(options.debug);
@@ -61,6 +62,11 @@ export async function init(options: {
   backButton.mount.ifAvailable();
   initData.restore();
 
+  try {
+    miniApp.ready.ifAvailable();
+  } catch { /* empty */
+  }
+
   if (miniApp.mount.isAvailable()) {
     themeParams.mount();
     miniApp.mount();
@@ -68,8 +74,19 @@ export async function init(options: {
   }
 
   if (viewport.mount.isAvailable()) {
-    viewport.mount().then(() => {
+    try {
+      await viewport.mount();
       viewport.bindCssVars();
-    });
+
+      if (['ios', 'android'].includes(options.platform)) {
+        viewport.expand.ifAvailable();
+
+        try {
+          await viewport.requestFullscreen.ifAvailable();
+        } catch { /* empty */
+        }
+      }
+    } catch { /* empty */
+    }
   }
 }
