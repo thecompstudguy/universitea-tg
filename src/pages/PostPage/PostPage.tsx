@@ -45,6 +45,7 @@ export const PostPage: FC = () => {
   const [draft, setDraft] = useState('');
 
   const comments = useMemo(() => [...baseComments, ...extraComments], [baseComments, extraComments]);
+  const hasDraft = draft.trim().length > 0;
 
   if (!post || !author) {
     return (
@@ -179,6 +180,7 @@ export const PostPage: FC = () => {
         </List>
         <FixedLayout vertical="bottom" className="post-page__composer">
           <Input
+            className="post-page__input"
             header="Add a comment"
             placeholder="Keep it safe. No names, no doxxing."
             value={draft}
@@ -187,7 +189,8 @@ export const PostPage: FC = () => {
               <IconButton
                 size="m"
                 mode="bezeled"
-                disabled={!draft.trim()}
+                className={`post-page__send-btn${hasDraft ? ' post-page__send-btn--active' : ''}`}
+                disabled={!hasDraft}
                 aria-label="Send comment"
                 onClick={() => {
                   const body = draft.trim();
