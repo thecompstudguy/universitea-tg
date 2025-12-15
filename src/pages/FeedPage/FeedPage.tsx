@@ -1,6 +1,7 @@
 import { Avatar, Badge, Cell, IconButton, List, Section, Text } from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
 import { useState } from 'react';
+import { initData, useSignal } from '@tma.js/sdk-react';
 
 import { BrandMark } from '@/components/BrandMark/BrandMark.tsx';
 import { CreatePostModal, type CreatePostPayload } from '@/components/CreatePostModal/CreatePostModal.tsx';
@@ -39,6 +40,12 @@ function PlusIcon() {
 }
 
 export const FeedPage: FC = () => {
+  const initDataState = useSignal(initData.state);
+  const telegramUser = initDataState?.user;
+  const meAvatarProps = telegramUser?.photo_url
+    ? { src: telegramUser.photo_url, alt: telegramUser.first_name || 'Me' }
+    : { acronym: 'ME', style: { backgroundColor: '#1b1b1b' } };
+
   const [createOpen, setCreateOpen] = useState(false);
   const [posts, setPosts] = useState(() => [...teaPosts]);
 
@@ -78,8 +85,7 @@ export const FeedPage: FC = () => {
             <Link to="/me" aria-label="Open your profile">
               <Avatar
                 size={40}
-                acronym="ME"
-                style={{ backgroundColor: '#1b1b1b' }}
+                {...meAvatarProps}
               />
             </Link>
           </div>
