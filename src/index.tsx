@@ -16,6 +16,7 @@ import './index.css';
 import './mockEnv.ts';
 
 const MIN_LOADING_SCREEN_MS = 500;
+const INIT_TIMEOUT_MS = 4000;
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
@@ -29,12 +30,15 @@ try {
     || import.meta.env.DEV;
 
   // Configure all application dependencies.
-  await init({
-    debug,
-    eruda: debug && ['ios', 'android'].includes(platform),
-    mockForMacOS: platform === 'macos',
-    platform,
-  });
+  await Promise.race([
+    init({
+      debug,
+      eruda: debug && ['ios', 'android'].includes(platform),
+      mockForMacOS: platform === 'macos',
+      platform,
+    }),
+    new Promise<void>((resolve) => setTimeout(resolve, INIT_TIMEOUT_MS)),
+  ]);
 
   const remainingLoadingMs = MIN_LOADING_SCREEN_MS - (Date.now() - loadingScreenStartedAt);
   if (remainingLoadingMs > 0) {
