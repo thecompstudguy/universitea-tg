@@ -1,5 +1,6 @@
 .profile-page {
   min-height: 100vh;
+  padding-top: calc(75px + var(--ut-safe-area-top, env(safe-area-inset-top, 0px)));
   padding-bottom: calc(72px + var(--tgui--safe_area_inset_bottom, 0px));
 }
 

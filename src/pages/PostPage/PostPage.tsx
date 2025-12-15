@@ -70,6 +70,7 @@ export const PostPage: FC = () => {
         <List>
           <Section header="Post">
             <Cell
+              className="post-page__cell"
               before={
                 <Avatar
                   size={40}
@@ -77,7 +78,11 @@ export const PostPage: FC = () => {
                   style={{ backgroundColor: author.avatarColor }}
                 />
               }
-              subtitle={`${author.handle} • ${createdAt} • ${post.school}`}
+              subtitle={(
+                <span className="post-page__subtitle">
+                  {author.handle} • {createdAt} • {post.school}
+                </span>
+              )}
               after={
                 <div className="post-page__after">
                   {isVerified && (
@@ -92,7 +97,19 @@ export const PostPage: FC = () => {
               }
               multiline
             >
-              {post.body}
+              <div className="post-page__cell-content">
+                <div className="post-page__body">{post.body}</div>
+                <div className="post-page__meta-row post-page__meta-row--mobile">
+                  {isVerified && (
+                    <span className="post-page__trust post-page__trust--verified">
+                      VERIFIED
+                    </span>
+                  )}
+                  <Badge type="number" className="post-page__badge">
+                    {comments.length}
+                  </Badge>
+                </div>
+              </div>
             </Cell>
             <Link to={`/user/${author.id}`}>
               <Cell subtitle="View user details">About {author.handle}</Cell>
@@ -151,7 +168,9 @@ export const PostPage: FC = () => {
                     multiline
                     readOnly
                   >
-                    {comment.body}
+                    <div className="post-page__comment-body">
+                      {comment.body}
+                    </div>
                   </Cell>
                 );
               })

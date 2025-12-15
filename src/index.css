@@ -50,3 +50,9 @@ body {
   --tgui--surface_primary: rgba(11, 11, 11, 0.96);
   --tgui--toast_accent_color: #ff9000;
 }
+
+@media (max-width: 520px) {
+  .app-root {
+    font-size: 15px;
+  }
+}
