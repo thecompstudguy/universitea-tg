@@ -1,6 +1,7 @@
 import { Avatar, Badge, Cell, IconButton, List, Section, Text } from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
 import { useState } from 'react';
+import { initData, useSignal } from '@tma.js/sdk-react';
 
 import { BrandMark } from '@/components/BrandMark/BrandMark.tsx';
 import { CreatePostModal, type CreatePostPayload } from '@/components/CreatePostModal/CreatePostModal.tsx';
@@ -39,6 +40,12 @@ function PlusIcon() {
 }
 
 export const FeedPage: FC = () => {
+  const initDataState = useSignal(initData.state);
+  const telegramUser = initDataState?.user;
+  const meAvatarProps = telegramUser?.photo_url
+    ? { src: telegramUser.photo_url, alt: telegramUser.first_name || 'Me' }
+    : { acronym: 'ME', style: { backgroundColor: '#1b1b1b' } };
+
   const [createOpen, setCreateOpen] = useState(false);
   const [posts, setPosts] = useState(() => [...teaPosts]);
 
@@ -78,8 +85,7 @@ export const FeedPage: FC = () => {
             <Link to="/me" aria-label="Open your profile">
               <Avatar
                 size={40}
-                acronym="ME"
-                style={{ backgroundColor: '#1b1b1b' }}
+                {...meAvatarProps}
               />
             </Link>
           </div>
@@ -100,6 +106,7 @@ export const FeedPage: FC = () => {
               return (
                 <Link key={post.id} to={`/post/${post.id}`}>
                   <Cell
+                    className="feed-page__cell"
                     before={
                       <Avatar
                         size={40}
@@ -107,7 +114,11 @@ export const FeedPage: FC = () => {
                         style={{ backgroundColor: author.avatarColor }}
                       />
                     }
-                    subtitle={`${author.handle} • ${createdAt} • ${post.school}`}
+                    subtitle={(
+                      <span className="feed-page__subtitle">
+                        {author.handle} • {createdAt} • {post.school}
+                      </span>
+                    )}
                     after={
                       <div className="feed-page__after">
                         {showVerified && (
@@ -125,7 +136,22 @@ export const FeedPage: FC = () => {
                     }
                     multiline
                   >
-                    {post.body}
+                    <div className="feed-page__cell-content">
+                      <div className="feed-page__body">{post.body}</div>
+                      <div className="feed-page__meta-row feed-page__meta-row--mobile">
+                        {showVerified && (
+                          <span className="feed-page__trust feed-page__trust--verified">
+                            VERIFIED
+                          </span>
+                        )}
+                        <Badge
+                          type="number"
+                          className="feed-page__badge"
+                        >
+                          {commentCount}
+                        </Badge>
+                      </div>
+                    </div>
                   </Cell>
                 </Link>
               );
