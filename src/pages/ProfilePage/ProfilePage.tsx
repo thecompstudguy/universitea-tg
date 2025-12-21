@@ -22,6 +22,9 @@ export const ProfilePage: FC = () => {
 
   const telegramUser = initDataState?.user;
   const anonHandle = useMemo(() => anonHandleFromTelegramId(telegramUser?.id), [telegramUser?.id]);
+  const meAvatarProps = telegramUser?.photo_url
+    ? { src: telegramUser.photo_url, alt: telegramUser.first_name || 'Me' }
+    : { acronym: 'ME', style: { backgroundColor: '#1b1b1b' } };
 
   const postCount = teaPosts.length;
 
@@ -43,15 +46,20 @@ export const ProfilePage: FC = () => {
           <BrandMark/>
           <Avatar
             size={40}
-            acronym="ME"
+            {...meAvatarProps}
             className="profile-page__me-avatar"
-            style={{ backgroundColor: '#1b1b1b' }}
           />
         </header>
         <List>
           <Section header="Your identity (inside UniversiTEA)">
             <Cell
-              before={<Avatar size={48} acronym="ME" style={{ backgroundColor: '#FF9000' }}/>}
+              before={(
+                <Avatar
+                  size={48}
+                  {...meAvatarProps}
+                  style={meAvatarProps.src ? undefined : { backgroundColor: '#FF9000' }}
+                />
+              )}
               subtitle="Pseudonymous handle"
               readOnly
             >

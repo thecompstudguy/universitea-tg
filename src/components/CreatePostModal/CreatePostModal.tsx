@@ -220,13 +220,14 @@ export const CreatePostModal: FC<{
         Write your post and optionally add photos/videos.
       </p>
       <List>
-        <Section header="What’s the tea?">
-          <Textarea
-            header="Post text"
-            placeholder="Taglish ok. No names, no doxxing."
-            value={body}
-            onChange={(e) => setBody(e.currentTarget.value)}
-          />
+          <Section header="What’s the tea?">
+            <Textarea
+              className="create-post-modal__textarea"
+              header="Post text"
+              placeholder="Taglish ok. No names, no doxxing."
+              value={body}
+              onChange={(e) => setBody(e.currentTarget.value)}
+            />
         </Section>
         <Section header="Media" footer="You can add multiple photos and/or videos.">
           <FileInput
